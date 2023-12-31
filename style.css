@@ -1,0 +1,120 @@
+h1 {
+  text-align: center;
+  font-family: 'Arial Black', Times, serif;
+  color: rgba(232, 205, 130, 0.867);
+}
+table {
+  margin: 0 auto;
+}
+table,
+.cell {
+  border: 1px solid rgb(232, 154, 71);
+  background-color: rgba(232, 205, 130, 0.867);
+  position: relative;
+}
+
+.cell {
+  width: 70px;
+  height: 70px;
+  text-align: center;
+  position: relative;
+}
+.screen {
+  width: 260px;
+  min-height: 30px;
+  padding: 20px;
+  text-align: center;
+  margin: 0 auto;
+  border: 5px solid rgb(66, 34, 0);
+  margin: 10px auto;
+  background-color: rgb(125, 76, 23);
+}
+.inline {
+  display: flex;
+  align-items: center;
+}
+
+.timer {
+  margin-left: 20px;
+  right: auto;
+}
+
+body {
+  position: relative;
+  background: url(img/choco.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 900px;
+  margin: 0;
+  padding: 0;
+  flex-direction: column;
+  min-height: 100vh;
+}
+table,
+.cell:hover {
+  cursor: pointer;
+}
+.button:hover {
+  cursor: pointer;
+}
+.cover:hover {
+  background: rgb(193, 123, 48);
+}
+
+.negCount {
+  height: 30px;
+  width: 30px;
+}
+.cover {
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  background-color: rgb(110, 57, 1);
+  cursor: pointer;
+  border: 2px solid rgb(105, 54, 0);
+}
+.hidden {
+  display: none;
+}
+.marked {
+  width: 20px;
+  height: 20px;
+}
+.button1 {
+  background-color: #944c00;
+  color: rgb(202, 201, 200);
+  border: 1px solid rgb(148, 76, 0);
+}
+.button2 {
+  background-color: rgb(105, 54, 0);
+  color: rgb(202, 201, 200);
+  border: 1px solid rgb(105, 54, 0);
+}
+.button3 {
+  background-color: rgb(66, 34, 0);
+  color: rgb(202, 201, 200);
+  border: 1px solid rgb(66, 34, 0);
+}
+.button {
+  width: 50px;
+  height: 50px;
+  border-radius: 50% 50%;
+}
+.footer {
+  text-align: center;
+  padding: 10px;
+  background-color: rgb(193, 123, 48);
+  bottom: 0;
+  position: absolute;
+  width: 100%;
+  font-family: 'Times New Roman', Times, serif;
+  color: rgb(66, 34, 0);
+  z-index: -1;
+  font-size: xx-large;
+  font-weight: bolder;
+}
+.game-over {
+  width: 50px;
+  height: 50px;
+}

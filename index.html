@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Mine Sweeper</title>
+  </head>
+  <body onload="onInit()">
+    <h1>Mine Sweeper</h1>
+    <div class="screen">
+      <div class="game-level">
+        Game Level:
+        <button onclick="changeStage(this)" class="button button1">
+          <span class="button-text">Milk Choco</span>
+        </button>
+        <button onclick="changeStage(this)" class="button button2">
+          <span class="button-text">Dark Choco</span>
+        </button>
+        <button onclick="changeStage(this)" class="button button3">
+          <span class="button-text">Raw Cocoa</span>
+        </button>
+      </div>
+      <div class="inline">
+        <div class="timer">Time: <span class="timer-value">0</span></div>
+      </div>
+    </div>
+    <div class="container">
+      <table>
+        <tbody class="board"></tbody>
+      </table>
+    </div>
+    <div class="game-over"></div>
+    <footer>
+      <p class="footer">&copy; 2023 Uri Raz All Rights Reserved</p>
+    </footer>
+    <script src="util.js"></script>
+    <script src="main.js"></script>
+    <script src="userInteractions.js"></script>
+  </body>
+</html>
