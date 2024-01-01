@@ -1,19 +1,20 @@
 'use strict'
-var gClick = false
+var gClick = true
 
 function onCellClicked(elCell, i, j) {
   const elSpan = document.querySelector('.cover')
+  const currCell = gBoard[i][j]
+
+  if (currCell.isShown || currCell.isMarked || !gGame.isOn) return
+
   if (!gTimerRunning) {
     startTimer()
     gTimerRunning = true
   }
-  const currCell = gBoard[i][j]
-
-  if (currCell.isShown || currCell.isMarked) return
 
   currCell.isShown = true
   gGame.shownCount++
-
+  console.log('showncount', gGame.shownCount)
   elCell.classList.add('shown')
 
   const cellContent = elCell.querySelector('.content')
@@ -21,6 +22,11 @@ function onCellClicked(elCell, i, j) {
   cellContent.classList.remove('hidden')
 
   if (currCell.isMine) {
+    if (gGame.shownCount === 1) {
+      play()
+      return
+    }
+
     gameOver()
   } else {
     if (currCell.minesAroundCount === 0) {
@@ -51,7 +57,7 @@ function expandShown(board, i, j) {
 
 function onBtnClick(elBtn, i, j) {
   var cell = gBoard[i][j]
-  if (cell.isMarked) return
+  if (cell.isMarked || !gGame.isOn) return
   if (elBtn) {
     const elSpan = elBtn.querySelector('.cover')
 
@@ -71,7 +77,8 @@ function onMark(event, i, j, elCell) {
     cell.isMarked = !cell.isMarked
     elCell.innerHTML = cell.isMarked ? MARK : EMPTY
     cell.isMarked ? gGame.markedCount++ : gGame.markedCount--
-    console.log(gGame.markedCount)
+    console.log('markcount', gGame.markedCount)
+    victory()
   }
 }
 
