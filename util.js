@@ -45,44 +45,51 @@ function resetTimer() {
   const elTimer = document.querySelector('.timer-value')
   elTimer.innerText = 0
 }
-function cellColor(i, j) {
-  const cellColor = document.querySelectorAll('.cover')
-  const currCell = gBoard[i][j]
+function cellColor() {
+  const cellColor = document.querySelectorAll('.content')
   for (var i = 0; i < cellColor.length; i++) {
     const cell = cellColor[i]
-    switch (currCell.minesAroundCount) {
-      case 1:
+    switch (cell.innerText) {
+      case '1':
         cell.style.color = 'blue'
         cell.style.fontSize = `30px`
         break
-      case 2:
+      case '2':
         cell.style.color = 'green'
         cell.style.fontSize = `30px`
         break
-      case 3:
+      case '3':
         cell.style.color = 'red'
         cell.style.fontSize = `30px`
         break
-      case 4:
+      case '4':
         cell.style.color = 'purple'
         cell.style.fontSize = `30px`
         break
-      case 5:
+      case '5':
         cell.style.color = 'maroon'
         cell.style.fontSize = `30px`
         break
-      case 6:
+      case '6':
         cell.style.color = 'turquoise'
         cell.style.fontSize = `30px`
         break
-      case 7:
+      case '7':
         cell.style.color = 'black'
         cell.style.fontSize = `30px`
         break
-      case 8:
+      case '8':
         cell.style.color = 'grey'
+        cell.style.fontSize = `30px`
+        break
+      case MINE:
         cell.style.fontSize = `30px`
         break
     }
   }
+}
+function updateLiveCount() {
+  var livesCount = []
+  livesCount.push(gGame.livesCount)
+  console.log(livesCount)
 }

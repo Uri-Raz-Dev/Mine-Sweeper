@@ -12,11 +12,13 @@ var gGame = {
   markedCount: 0,
   secsPassed: 0,
   countCells: 0,
+  livesCount: 3,
+  livesDiff: 3,
 }
 
 var gLevel = {
   SIZE: 4,
-  MINES: 2,
+  MINES: 3,
 }
 function onInit() {
   resetTimer()
@@ -27,9 +29,14 @@ function onInit() {
   gGame.markedCount = 0
   gGame.countCells = 0
   gGame.secsPassed = 0
+  gGame.livesCount = 3
+  gGame.livesDiff = 3
+
   renderBoard(gBoard)
-  const elSpan = document.querySelector('.game-condition')
-  elSpan.innerText = GAME_ON
+  const elReset = document.querySelector('.game-condition')
+  const elLives = document.querySelector('.lives')
+  elLives.innerText = gGame.livesCount
+  elReset.innerText = GAME_ON
 }
 
 function createBoard() {
@@ -44,9 +51,10 @@ function createBoard() {
       }
     }
   }
-  // addMines(board)
-  board[0][0].isMine = true
-  board[1][2].isMine = true
+  addMines(board)
+  // board[0][0].isMine = true
+  // board[0][1].isMine = true
+  // board[1][2].isMine = true
   calculateMinesAroundCount(board)
   return board
 }
@@ -59,7 +67,7 @@ function renderBoard(board) {
       const currCell = board[i][j]
       var cellClass = getClassName({ i, j })
 
-      strHTML += `\t<td onClick="onCellClicked(this,${i},${j})" class="cell ${cellClass}">`
+      strHTML += `\t<td onclick="onCellClicked(this,${i},${j})" class="cell ${cellClass}">`
       strHTML += `<span class="content hidden">`
 
       if (currCell.isMine) {
@@ -114,9 +122,8 @@ function calculateMinesAroundCount(board) {
 }
 
 function addMines(board) {
-  var mineCount = 0
   var minesPlaced = []
-
+  var mineCount = 0
   while (mineCount < gLevel.MINES) {
     var randRow = getRandomInt(0, board.length - 1)
     var randCol = getRandomInt(0, board[randRow].length - 1)
@@ -127,14 +134,13 @@ function addMines(board) {
       board[randRow][randCol].isMine = true
       minesPlaced.push(minePosition)
       mineCount++
+      console.log(mineCount)
     }
   }
 }
 function gameOver() {
   const game = document.querySelector('.game-condition')
   if (gGame.isOn) {
-    game.innerText = GAME_OVER
-
     for (var i = 0; i < gBoard.length; i++) {
       for (var j = 0; j < gBoard[i].length; j++) {
         const cell = gBoard[i][j]
@@ -142,12 +148,13 @@ function gameOver() {
         const elCover = document.querySelector(`.cover${i}-${j}`)
         const elMine = elCell.querySelector('.content')
 
-        if (cell.isMine) {
+        if (cell.isMine && gGame.livesCount === 0) {
           elMine.classList.remove('hidden')
           elCover.classList.add('hidden')
           elMine.style.backgroundColor = 'red'
           gGame.isOn = false
           clearInterval(gInterval)
+          game.innerText = GAME_OVER
         }
       }
     }
@@ -158,7 +165,8 @@ function victory() {
   const game = document.querySelector('.game-condition')
   if (gGame.isOn) {
     if (
-      gGame.markedCount === gLevel.MINES &&
+      gGame.markedCount ===
+      gLevel.MINES - (gGame.livesDiff - gGame.livesCount) &&
       gGame.shownCount + gGame.markedCount === gGame.countCells
     ) {
       game.innerText = VICTORY
@@ -169,20 +177,19 @@ function victory() {
 }
 function generateNewBoard(board) {
   var newBoard = copyMat(board)
+  gGame.countCells = 0
   for (var row = 0; row < board.length; row++) {
     for (var col = 0; col < board[0].length; col++) {
-      if (board[row][col] === MINE) {
-        newBoard[row][col] = EMPTY
-      }
       newBoard[row][col].minesAroundCount = setMinesNegsCount(
         { i: row, j: col },
         newBoard
       )
+
     }
   }
   removeMines(gBoard)
-  addMines(newBoard)
-  calculateMinesAroundCount(newBoard)
+  addMines(gBoard)
+  calculateMinesAroundCount(gBoard)
   return newBoard
 }
 
@@ -197,4 +204,7 @@ function removeMines(board) {
       board[i][j].isMine = false
     }
   }
+}
+function resetBoard() {
+  gBoard = []
 }

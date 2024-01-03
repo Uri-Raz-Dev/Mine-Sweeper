@@ -3,14 +3,19 @@ h1 {
   font-family: 'Arial Black', Times, serif;
   color: rgba(232, 205, 130, 0.867);
 }
+
 table {
   margin: 0 auto;
 }
+
 table,
 .cell {
   border-collapse: collapse;
   background-color: rgba(232, 205, 130, 0.867);
+  opacity: 0.92;
   position: relative;
+  border: none;
+  outline: none;
 }
 
 .cell {
@@ -19,9 +24,10 @@ table,
   text-align: center;
   position: relative;
 }
+
 .screen {
-  width: 460px;
-  min-height: 30px;
+  width: fit-content;
+  height: fit-content;
   padding: 20px;
   text-align: center;
   margin: 0 auto;
@@ -29,6 +35,7 @@ table,
   margin: 10px auto;
   background-color: rgb(125, 76, 23);
 }
+
 .inline {
   display: flex;
   align-items: center;
@@ -37,6 +44,8 @@ table,
 .timer {
   margin-left: 20px;
   right: auto;
+  color: rgba(232, 205, 130, 0.867);
+  font-size: 30px;
 }
 
 body {
@@ -45,19 +54,24 @@ body {
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
-  height: 900px;
+  height: 100vh;
   margin: 0;
   padding: 0;
   flex-direction: column;
-  min-height: 100vh;
+  overflow: hidden;
+  align-content: center;
+  justify-content: center;
 }
+
 table,
 .cell:hover {
   cursor: pointer;
 }
+
 .button:hover {
   cursor: pointer;
 }
+
 .cover:hover {
   background: rgb(193, 123, 48);
   transition: 0.5s;
@@ -67,6 +81,7 @@ table,
   height: 30px;
   width: 30px;
 }
+
 .cover {
   box-sizing: border-box;
   width: 100%;
@@ -75,34 +90,41 @@ table,
   cursor: pointer;
   border: 0;
   padding: 0;
+  font-size: xx-large;
+  display: block;
+  outline: none;
+  margin: 0;
 }
+
 .hidden {
   display: none;
 }
-.marked {
-  width: 20px;
-  height: 20px;
-}
+
 .button1 {
   background-color: #944c00;
   color: rgb(202, 201, 200);
   border: 1px solid rgb(148, 76, 0);
 }
+
 .button2 {
   background-color: rgb(105, 54, 0);
   color: rgb(202, 201, 200);
   border: 1px solid rgb(105, 54, 0);
 }
+
 .button3 {
   background-color: rgb(66, 34, 0);
   color: rgb(202, 201, 200);
   border: 1px solid rgb(66, 34, 0);
 }
+
 .button {
   width: 50px;
   height: 50px;
   border-radius: 50% 50%;
+  margin: 10px;
 }
+
 .footer {
   text-align: center;
   padding: 10px;
@@ -118,17 +140,31 @@ table,
 }
 
 .reset {
-  width: 50px;
-  height: 50px;
-  margin: auto;
+  width: 60px;
+  height: 60px;
+  margin: 0 auto;
   text-align: center;
   background-color: rgba(232, 205, 130, 0.867);
 }
+
 .game-condition {
   width: 100px;
   height: 100px;
   font-size: 20px;
 }
-.content {
-  display: hidden;
+
+.game-level {
+  font-size: 30px;
+  color: rgba(232, 205, 130, 0.867);
+  margin-bottom: 20px;
+}
+
+.timer-value {
+  color: rgba(332, 205, 130, 0.867);
+}
+
+.lives-count,
+.lives {
+  font-size: 30px;
+  color: rgba(232, 205, 130, 0.867);
 }
