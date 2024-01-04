@@ -44,7 +44,7 @@ function createBoard() {
   for (var i = 0; i < board.length; i++) {
     for (var j = 0; j < board[i].length; j++) {
       board[i][j] = {
-        minesAroundCount: setMinesNegsCount({ i, j }, board),
+        minesAroundCount: 0,
         isShown: false,
         isMine: false,
         isMarked: false,
@@ -52,9 +52,6 @@ function createBoard() {
     }
   }
   addMines(board)
-  // board[0][0].isMine = true
-  // board[0][1].isMine = true
-  // board[1][2].isMine = true
   calculateMinesAroundCount(board)
   return board
 }
@@ -180,10 +177,7 @@ function generateNewBoard(board) {
   gGame.countCells = 0
   for (var row = 0; row < board.length; row++) {
     for (var col = 0; col < board[0].length; col++) {
-      newBoard[row][col].minesAroundCount = setMinesNegsCount(
-        { i: row, j: col },
-        newBoard
-      )
+      newBoard[row][col].minesAroundCount = 0
 
     }
   }
@@ -204,7 +198,4 @@ function removeMines(board) {
       board[i][j].isMine = false
     }
   }
-}
-function resetBoard() {
-  gBoard = []
 }

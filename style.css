@@ -23,6 +23,7 @@ table,
   height: 70px;
   text-align: center;
   position: relative;
+  caret-color: transparent;
 }
 
 .screen {
@@ -58,9 +59,9 @@ body {
   margin: 0;
   padding: 0;
   flex-direction: column;
-  overflow: hidden;
   align-content: center;
   justify-content: center;
+
 }
 
 table,
@@ -168,3 +169,7 @@ table,
   font-size: 30px;
   color: rgba(232, 205, 130, 0.867);
 }
+
+/* .content {
+  overflow-wrap: break-word;
+} */

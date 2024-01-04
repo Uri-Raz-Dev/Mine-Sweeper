@@ -10,28 +10,29 @@
 
 <body onload="onInit()">
   <h1>Mine Sweeper</h1>
-  <div class="screen">
-    <div class="game-level">
-      <span class="level">Game Level: </span>
-      <button onclick="changeStage(this)" class="button button1">
-        <span class="button-text">Milk Choco</span>
-      </button>
-      <button onclick="changeStage(this)" class="button button2">
-        <span class="button-text">Dark Choco</span>
-      </button>
-      <button onclick="changeStage(this)" class="button button3">
-        <span class="button-text">Raw Cocoa</span>
-      </button>
-    </div>
-    <div class="inline">
-      <div class="timer">Time: <span class="timer-value">0</span></div>
-      <button onclick="onInit()" class="reset">
-        <span class="game-condition">😃</span>
-      </button>
-      <div class="lives-count">Lives: <span class="lives"></span></div>
-    </div>
-  </div>
   <div class="container">
+    <div class="screen">
+      <div class="game-level">
+        <span class="level">Game Level: </span>
+        <button onclick="changeStage(this)" class="button button1">
+          <span class="button-text">Milk Choco</span>
+        </button>
+        <button onclick="changeStage(this)" class="button button2">
+          <span class="button-text">Dark Choco</span>
+        </button>
+        <button onclick="changeStage(this)" class="button button3">
+          <span class="button-text">Raw Cocoa</span>
+        </button>
+      </div>
+      <div class="inline">
+        <div class="timer">Time: <span class="timer-value">0</span></div>
+        <button onclick="onInit()" class="reset">
+          <span class="game-condition">😃</span>
+        </button>
+        <div class="lives-count">Lives: <span class="lives"></span></div>
+      </div>
+    </div>
+
     <table>
       <tbody class="board"></tbody>
     </table>

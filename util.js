@@ -7,6 +7,7 @@ function getRandomInt(min, max) {
   max = Math.floor(max)
   return Math.floor(Math.random() * (max - min + 1) + min)
 }
+
 function createMat(ROWS, COLS) {
   const mat = []
   for (var i = 0; i < ROWS; i++) {
@@ -18,6 +19,7 @@ function createMat(ROWS, COLS) {
   }
   return mat
 }
+
 function copyMat(mat) {
   var newMat = []
   for (var i = 0; i < mat.length; i++) {
@@ -28,6 +30,7 @@ function copyMat(mat) {
   }
   return newMat
 }
+
 function startTimer() {
   gStartTime = performance.now()
   gInterval = setInterval(() => {
@@ -38,6 +41,7 @@ function startTimer() {
     gGame.secsPassed = +elTimer.innerText
   }, 1000)
 }
+
 function resetTimer() {
   clearInterval(gInterval)
   gStartTime = null
@@ -45,6 +49,7 @@ function resetTimer() {
   const elTimer = document.querySelector('.timer-value')
   elTimer.innerText = 0
 }
+
 function cellColor() {
   const cellColor = document.querySelectorAll('.content')
   for (var i = 0; i < cellColor.length; i++) {
@@ -87,9 +92,4 @@ function cellColor() {
         break
     }
   }
-}
-function updateLiveCount() {
-  var livesCount = []
-  livesCount.push(gGame.livesCount)
-  console.log(livesCount)
 }
